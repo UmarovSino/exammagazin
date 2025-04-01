@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-    const elements = {
+let elements = {
         cartCounter: document.querySelector(".cart-counter"),
         cartItemsContainer: document.querySelector(".cart-items"),
         orderSummary: document.querySelector(".order-summary span"),
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const cartManager = {
+    let cartManager = {
         addItem: product => {
             const existingItem = cart.find(item => item.id === String(product.id));
             if (existingItem) {
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const renderCartItems = () => {
+    let renderCartItems = () => {
         elements.cartItemsContainer.innerHTML = cart.map(item => `
             <li class="cart-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const updateOrderSummary = () => {
+    let updateOrderSummary = () => {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         elements.orderSummary.textContent = `€${total.toFixed(2)}`;
     };
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartManager.updateCartUI();
 
-    const loadProducts = async () => {
+    let loadProducts = async () => {
         try {
             const response = await fetch('http://localhost:3000/product');
             const data = await response.json();
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const renderProducts = (products) => {
+    let renderProducts = (products) => {
         elements.productsContainer.innerHTML = products.map(product => `
             <article class="product-card" data-id="${product.id}" data-price="${product.price}" data-category="${product.brand.toLowerCase()}">
                 <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         initHoverEffect();
     };
 
-    const initProductHandlers = () => {
+    let initProductHandlers = () => {
         elements.productsContainer.addEventListener("click", (e) => {
             const addButton = e.target.closest(".add-to-cart");
             if (!addButton) return;
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const initHoverEffect = () => {
+    let initHoverEffect = () => {
         const productCards = document.querySelectorAll(".product-card");
         productCards.forEach(card => {
             const addToCartButton = card.querySelector(".add-to-cart-container");

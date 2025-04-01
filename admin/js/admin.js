@@ -1,7 +1,7 @@
 import { getProducts, addProduct, editProduct, deleteProduct } from './API.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const elements = {
+let elements = {
         productForm: document.getElementById("product-form"),
         productTable: document.getElementById("product-table").querySelector("tbody"),
         nameInput: document.getElementById("name"),
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let editingProductId = null;
 
   
-    const loadProducts = async () => {
+    let loadProducts = async () => {
         try {
             const products = await getProducts();
             renderProducts(products);
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const renderProducts = products => {
+    let renderProducts = products => {
         elements.productTable.innerHTML = products.map(product => `
             <tr data-id="${product.id}">
                 <td>${product.name}</td>
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
    
-    const initActionHandlers = () => {
+    let initActionHandlers = () => {
         elements.productTable.querySelectorAll(".edit-btn").forEach(button => {
             button.addEventListener("click", handleEdit);
         });
@@ -50,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const handleEdit = async (event) => {
-        const row = event.target.closest("tr");
-        const productId = row.dataset.id;
+    let handleEdit = async (event) => {
+        let row = event.target.closest("tr");
+        let productId = row.dataset.id;
 
-        const products = await getProducts();
-        const product = products.find(p => p.id === productId);
+        let products = await getProducts();
+        let product = products.find(p => p.id === productId);
 
         if (product) {
             elements.nameInput.value = product.name;
@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const handleDelete = async (event) => {
-        const row = event.target.closest("tr");
-        const productId = row.dataset.id;
+    let handleDelete = async (event) => {
+        let row = event.target.closest("tr");
+        let productId = row.dataset.id;
 
         try {
             await deleteProduct(productId);
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.productForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const productData = {
+        let productData = {
             name: elements.nameInput.value,
             price: parseFloat(elements.priceInput.value),
             image: elements.imageInput.value,

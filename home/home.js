@@ -1,4 +1,4 @@
-
+///ин логика барои рандомно вибр кардани элемент аз api мегира ва мемонашон
 async function loadRandomProducts() {
     try {
 
@@ -26,21 +26,21 @@ async function loadRandomProducts() {
                 mainContainer.appendChild(productElement);
             });
         } else {
-            console.log('Нет доступных товаров');
+            console.log('товар нест');
         }
     } catch (error) {
-        console.error('Ошибка при загрузке данных: ', error);
+        console.error( error);
     }
 }
 
 
 function getRandomItems(arr, n) {
-    let shuffled = arr.slice();
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    let element = arr.slice();
+    for (let i = element.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [element[i], element[j]] = [element[j], element[i]];
     }
-    return shuffled.slice(0, n);
+    return element.slice(0, n);
 }
 
 document.querySelector('.allproducts').addEventListener('click', loadRandomProducts);
