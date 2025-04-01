@@ -3,12 +3,11 @@
     "development"
   ],
   "hints": {
-    "meta-viewport": "off",
-    "axe/forms": [
+    "button-type": "off",
+    "axe/keyboard": [
       "default",
       {
-        "select-name": "off",
-        "label": "off"
+        "nested-interactive": "off"
       }
     ],
     "axe/name-role-value": [
@@ -17,11 +16,12 @@
         "button-name": "off"
       }
     ],
-    "button-type": "off",
-    "axe/keyboard": [
+    "meta-viewport": "off",
+    "axe/forms": [
       "default",
       {
-        "nested-interactive": "off"
+        "select-name": "off",
+        "label": "off"
       }
     ]
   }
