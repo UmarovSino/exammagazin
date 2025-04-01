@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const products = data.products || data;
             renderProducts(products);
         } catch (error) {
-            console.error( error);
+            console.error(error);
         }
     };
 
