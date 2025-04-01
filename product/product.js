@@ -13,7 +13,7 @@ let elements = {
         searchInput: document.querySelector(".search"),
         selectProduct: document.querySelector(".selectproduct")
     };
-
+////логикаи корзина
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let cartManager = {
@@ -62,7 +62,7 @@ let elements = {
                         <span class="quantity">${item.quantity}</span>
                         <button class="quantity-btn increment" data-action="increment">+</button>
                     </div>
-                    <p class="item-total">€${(item.price * item.quantity).toFixed(2)}</p>
+                    <p class="item-total">$${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
                 <button class="remove-item" data-action="remove">
                     <i class="fas fa-trash"></i>
@@ -89,10 +89,10 @@ let elements = {
                 break;
         }
     });
-
+////логика total
     let updateOrderSummary = () => {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        elements.orderSummary.textContent = `€${total.toFixed(2)}`;
+        elements.orderSummary.textContent = `$${total.toFixed(2)}`;
     };
 
     elements.cartBtn.addEventListener("click", () => elements.modalBackdrop.style.display = "flex");
@@ -118,7 +118,7 @@ let elements = {
                 <img src="${product.image}" alt="${product.name}" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">${product.name}</h3>
-                    <p class="product-price">€${product.price}</p>
+                    <p class="product-price">$${product.price}</p>
                 </div>
                 <div class="add-to-cart-container">
                     <button class="add-to-cart">
