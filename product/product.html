@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Comfy - Furniture Store</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+           
+
+            <ul class="categoryHome">
+                <li class="home"><a href="/home/home.html">Home</a></li>
+                <li class="products"><a href="/product/product.html">Products</a></li>
+                <li class="about"><a href="/about/about.html">About</a></li>
+            </ul>
+
+            <h1 class="comfy">Comfy</h1>
+
+            <div class="cart-container">
+                <button class="cart-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                    <span class="cart-counter">0</span>
+                </button>
+            </div>
+
+            <div class="modal-backdrop">
+                <div class="modal">
+                    <div class="order-header">
+                        <h2>корзинада партофтиш бхар ак</h2>
+                        <button class="close-modal" aria-label="Close">&times;</button>
+                    </div>
+
+                    <div class="order-content">
+                        <ul class="cart-items"></ul>
+
+                        <div class="order-summary">
+                            <p>Total: <span>€0.00</span></p>
+                            <button class="checkout-btn">Checkout</button>
+                            <button class="continue-btn">Continue Shopping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="breadcrumbs">
+            <p>Home / Products</p>
+        </section>
+    </header>
+
+    <main>
+        <section class="asaide-products">
+            <aside class="aside-products">
+                <input type="text" class="search" placeholder="Search products...">
+
+                <select class="selectproduct">
+                    <option value="all">All Brands</option>
+                    <option value="ikea">IKEA</option>
+                    <option value="marcos">Marcos</option>
+                    <option value="caressa">Caressa</option>
+                    <option value="liddy">Liddy</option>
+                </select>
+
+                <div class="price-filter">
+                    <h3>Max Price: €<span id="priceDisplay">80</span></h3>
+                    <input type="range" id="priceRange" min="0" max="200" value="80" step="5">
+                </div>
+            </aside>
+
+            <aside class="page-asaide">
+             
+                <article class="product-card" data-id="1" data-price="99.99" data-category="ikea">
+                    <img src="product-image.jpg" alt="Product Name" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Product Name</h3>
+                        <p class="product-price">€99.99</p>
+                    </div>
+                    <div class="add-to-cart-container">
+                        <button class="add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </article>
+                
+               
+            </aside>
+            
+        </section>
+    </main>
+
+    <script src="/product/product.js"></script>
+    <script src="/admin/js/main.js"></script>
+    <script src="/about/about.js"></script>
+  <script src="/home/home.js"></script>
+   
+</body>
+
+</html>

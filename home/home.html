@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="/home/css.css">
+    <link rel="stylesheet" href="/product/css.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="categoryHome">
+                <li class="home"><a href="http://127.0.0.1:5500/home/home.html">home</a></li>
+                <li class="products"><a href="http://127.0.0.1:5500/product/product.html">product</a></li>
+                <li class="about"><a href="http://127.0.0.1:5500/about/about.html">about</a></li>
+                <li class="admin"><a href="http://127.0.0.1:5500/admin/admin.html?">admin</a></li>
+            </ul>
+            <h2 class="comfy">Comfy</h2>
+
+            <div class="cart-container">
+                <button class="cart-btn" data-action="open-modal">
+                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                    <span class="cart-counter">0</span>
+                </button>
+            </div>
+
+            <div class="modal-backdrop">
+                <div class="modal">
+                    <form class="order-form">
+                        <div class="order-header">
+                            <button class="close-modal" type="button" data-action="close-modal"></button>
+                        </div>
+
+                        <div class="order-content">
+                            <ul class="cart-items">
+                                <li class="cart-item">
+                                    <img src="" alt="">
+                                    <div class="item-info">
+                                        <h3></h3>
+                                        <p></p>
+                                        <p></p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="order-summary">
+                                <p>total: <span>$0.00</span></p>
+                                <button class="checkout-btn">checkout</button>
+                                <button class="close">Continue shopping</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <section class="imagesection">
+            <h2 class="sss">Rest, Relax, Unwind</h2>
+            <h1 class="ss1">Embrace your choices - we do</h1>
+            <button class="shownow"><a href="http://127.0.0.1:5500/product/product.html">shownow</a></button>
+        </section>
+    </header>
+
+    <main>
+        <section class="SECTION">
+            <h2><span>/</span>Featured</h2>
+            <div class="main">
+
+            </div>
+            <button class="allproducts"><a href="http://127.0.0.1:5500/product/product.html">allproducts</a></button>
+        </section>
+    </main>
+
+    <script src="/admin/js/main.js"></script>
+    <script src="/home/home.js"></script>
+    <script src="/product/product.js"></script>
+    <script src="/home/random.js"></script>
+  
+</body>
+
+</html>

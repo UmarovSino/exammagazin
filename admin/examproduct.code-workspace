@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "examproduct",
+			"path": ".."
+		},
+		{
+			"name": "about",
+			"path": "../../internetMagazin/about"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "examproduct"
+	}
+}
