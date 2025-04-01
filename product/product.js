@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-let elements = {
+    let elements = {
         cartCounter: document.querySelector(".cart-counter"),
         cartItemsContainer: document.querySelector(".cart-items"),
         orderSummary: document.querySelector(".order-summary span"),
@@ -13,7 +13,7 @@ let elements = {
         searchInput: document.querySelector(".search"),
         selectProduct: document.querySelector(".selectproduct")
     };
-////логикаи корзина
+    ////логикаи корзина
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let cartManager = {
@@ -89,7 +89,7 @@ let elements = {
                 break;
         }
     });
-////логика total
+    ////логика total
     let updateOrderSummary = () => {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         elements.orderSummary.textContent = `$${total.toFixed(2)}`;

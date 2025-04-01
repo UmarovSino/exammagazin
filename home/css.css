@@ -5,6 +5,7 @@
     height: 100vh;
     max-width: 1500px;
     margin: auto;
+
 }
 
 .sss {
@@ -82,28 +83,46 @@ span {
 
 a {
     text-decoration: none;
-     
-    
+    font-size: 23px;
 
+
+
+}
+
+li {
+    color: black;
 }
 
 .comfy {
 
     margin-top: -12px;
 }
-.shownow{
+
+.shownow {
     margin-top: 300px;
     margin-left: 500px;
     padding: 10px;
     background-color: blue;
     color: white;
     width: 120px;
-    
+
 
 }
 
-.close{
-margin-top: 23px;
-width: 360px;
-padding:7px;
+.close {
+    margin-top: 23px;
+    width: 360px;
+    padding: 7px;
+}
+
+.allproducts {
+    a {
+        color: #fff;
+    }
+}
+
+.shownow {
+    a {
+        color: white;
+    }
 }
