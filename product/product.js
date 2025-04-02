@@ -196,5 +196,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    loadProducts();
+
+    let initProductInfoModal = () => {
+        const modal = document.querySelector(".product-modal");
+        const modalContent = document.querySelector(".product-modal-content");
+
+        document.querySelectorAll(".product-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                if (e.target.closest(".add-to-cart")) return; 
+
+                let productId = card.dataset.id;
+                const productName = card.querySelector(".product-title").textContent;
+                const productPrice = card.querySelector(".product-price").textContent;
+                const productImage = card.querySelector(".product-image").src;
+
+                modalContent.innerHTML = `
+                    <img src="${productImage}" alt="${productName}" class="modal-product-image">
+                    <h2>${productName}</h2>
+                    <p>Price: ${productPrice}</p>
+                    <p class="description">This wardrobe is the perfect blend of style and practicality. With several shelves and spacious drawers, it will help you organize your space and store everything you need. Fashionable and versatile, it will complement any bedroom or hallway, bringing a sense of order and harmony to your interior.</p>
+                    <button class="close-modal">Close</button>
+                `;
+
+                modal.style.display = "flex";
+
+              /////махкамшавии модалкаи информация
+                document.querySelector(".close-modal").addEventListener("click", () => {
+                    modal.style.display = "none";
+                  
+                });
+
+                modal.addEventListener("click", (event) => {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+        });
+    };
+
+   
+    loadProducts().then(() => {
+        initProductInfoModal();
+    });
+
+
+
 });
+
+
+

@@ -1,7 +1,7 @@
-/* #about {
+#about {
   background-color: #f8f9fa;
   padding: 60px 20px;
-} */
+}
 
 .about-container {
   display: flex;
@@ -204,6 +204,7 @@ body {
 }
 
 .cart-item {
+ 
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -216,7 +217,7 @@ body {
 }
 
 .order-summary {
-
+ 
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
