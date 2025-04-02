@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let loadProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3000/product');
-            const data = await response.json();
-            const products = data.products || data;
+            let response = await fetch('http://localhost:3000/product');
+            let data = await response.json();
+            let products = data.products || data;
             renderProducts(products);
         } catch (error) {
             console.error(error);
