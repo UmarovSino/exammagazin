@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cartManager.updateCartUI();
         },
         updateCartUI: () => {
-            // Обновляем счётчик корзины
             elements.cartCounter.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
             renderCartItems();
             updateOrderSummary();
@@ -93,12 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let updateOrderSummary = () => {
         const total = cart.reduce((sum, item) => {
-            const price = parseFloat(item.price) || 0; // Убедитесь, что цена — число
-            const quantity = parseInt(item.quantity, 10) || 0; // Убедитесь, что количество — число
-            return sum + (price * quantity); // Считаем total
+            const price = parseFloat(item.price) || 0;
+            const quantity = parseInt(item.quantity, 10) || 0;
+            return sum + (price * quantity);
         }, 0);
 
-        elements.orderSummary.textContent = `$${total.toFixed(2)}`; // Отображаем с двумя знаками после запятой
+        elements.orderSummary.textContent = `$${total.toFixed(2)}`;
     };
 
     elements.cartBtn.addEventListener("click", () => elements.modalBackdrop.style.display = "flex");
@@ -162,6 +161,37 @@ document.addEventListener("DOMContentLoaded", () => {
             cartManager.addItem(productData);
         });
     };
+
+    if (elements.priceRange) {
+        elements.priceRange.addEventListener("input", () => {
+            const maxPrice = parseFloat(elements.priceRange.value);
+            elements.priceDisplay.textContent = `€${maxPrice}`;
+            document.querySelectorAll(".product-card").forEach(card => {
+                const productPrice = parseFloat(card.dataset.price) || 0;
+                card.style.display = productPrice <= maxPrice ? "block" : "none";
+            });
+        });
+    }
+
+    if (elements.searchInput) {
+        elements.searchInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll(".product-card").forEach(product => {
+                const productName = product.querySelector(".product-title").textContent.toLowerCase();
+                product.style.display = productName.includes(query) ? "block" : "none";
+            });
+        });
+    }
+
+    if (elements.selectProduct) {
+        elements.selectProduct.addEventListener("change", (e) => {
+            const category = e.target.value.toLowerCase();
+            document.querySelectorAll(".product-card").forEach(product => {
+                const productCategory = product.dataset.category || "";
+                product.style.display = category === "all" || productCategory === category ? "block" : "none";
+            });
+        });
+    }
 
     loadProducts();
 });
