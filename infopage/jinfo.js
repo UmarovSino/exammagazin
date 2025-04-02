@@ -14,10 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(product => {
             // Отображаем данные о товаре
             document.querySelector("#product-info").innerHTML = `
-                <h1>${product.title}</h1>
+                <h1>${product.name}</h1>
                 <img src="${product.image}" alt="${product.title}">
-                <p>Цена: $${product.price}</p>
-                <p>Описание: ${product.description}</p>
+                <h2>price: $${product.price}</h2>
+                <p>color: ${product.color}</p>
+                <p>storage:${product.storage}</p>
+                 <p>accumulyator:${product.acumulyator}</p>
+                  <p>brand:${product.brand}</p>
+                   <p>processor:${product.processor}</p>
+
             `;
         })
         .catch(error => {

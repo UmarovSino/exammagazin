@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="product-price">$${product.price}</p>
                     <div class="add-to-cart-container">
                         <button class="add-to-cart">Добавить в корзину</button>
-                        <a href="http://127.0.0.1:5500/infopage/html.html?id=${product.id}" class="view-details">Инфо</a>
+                        <a href="http://127.0.0.1:5500/infopage/html.html?id=${product.id}" class="view-details">info</a>
                     </div>
                 </div>
             </article>
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const category = e.target.value.toLowerCase();
             document.querySelectorAll(".product-card").forEach(product => {
                 const productCategory = product.dataset.category || "";
-                product.style.display = category === "all" || productCategory === category ? "block" : "none";
+                product.style.display = category == "all" || productCategory === category ? "block" : "none";
             });
         });
     }
