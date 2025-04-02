@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cartManager.updateCartUI();
         },
         updateCartUI: () => {
+            // Обновляем счётчик корзины
             elements.cartCounter.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
             renderCartItems();
             updateOrderSummary();
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="quantity">${item.quantity}</span>
                         <button class="quantity-btn increment" data-action="increment">+</button>
                     </div>
-                    <p class="item-total">$${(item.price * item.quantity).toFixed(2)}</p>
+                    <p class="item-total">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
                 </div>
                 <button class="remove-item" data-action="remove">
                     <i class="fas fa-trash"></i>
@@ -91,15 +92,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let updateOrderSummary = () => {
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        elements.orderSummary.textContent = `$${total.toFixed(2)}`;
+        const total = cart.reduce((sum, item) => {
+            const price = parseFloat(item.price) || 0; // Убедитесь, что цена — число
+            const quantity = parseInt(item.quantity, 10) || 0; // Убедитесь, что количество — число
+            return sum + (price * quantity); // Считаем total
+        }, 0);
+
+        elements.orderSummary.textContent = `$${total.toFixed(2)}`; // Отображаем с двумя знаками после запятой
     };
 
     elements.cartBtn.addEventListener("click", () => elements.modalBackdrop.style.display = "flex");
     elements.closeModal.addEventListener("click", () => elements.modalBackdrop.style.display = "none");
     elements.modalBackdrop.addEventListener("click", e => e.target === elements.modalBackdrop && (elements.modalBackdrop.style.display = "none"));
 
-    // Обработчик кнопки оформления заказа
     elements.checkoutbtn.addEventListener("click", () => {
         if (cart.length === 0) {
             alert("Ваша корзина пуста!");
@@ -119,35 +124,28 @@ document.addEventListener("DOMContentLoaded", () => {
     let loadProducts = async () => {
         try {
             let response = await fetch('http://localhost:3000/product');
-            let data = await response.json();
-            let products = data.products || data;
+            let products = await response.json();
             renderProducts(products);
         } catch (error) {
-            console.error(error);
+            console.error("Ошибка загрузки продуктов:", error);
         }
     };
 
     let renderProducts = (products) => {
         elements.productsContainer.innerHTML = products.map(product => `
-            <article class="product-card" data-id="${product.id}" data-price="${product.price}" data-category="${product.brand.toLowerCase()}">
+            <article class="product-card" data-id="${product.id}" data-price="${parseFloat(product.price) || 0}">
                 <img src="${product.image}" alt="${product.name}" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">${product.name}</h3>
                     <p class="product-price">$${product.price}</p>
-                    <h2 class="product-color" style="display:none">${product.color}</h2>
-                    <h2 class="product-storage" style="display:none">${product.storage}</h2>
-                    <h2 class="product-processor" style="display:none">${product.processor}</h2>
-                    <h2 class="product-acumulyator" style="display:none">${product.acumulyator}</h2>
-                </div>
-                <div class="add-to-cart-container">
-                    <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> 
-                    </button>
+                    <div class="add-to-cart-container">
+                        <button class="add-to-cart">Добавить в корзину</button>
+                        <a href="http://127.0.0.1:5500/infopage/html.html?id=${product.id}" class="view-details">Инфо</a>
+                    </div>
                 </div>
             </article>
         `).join('');
         initProductHandlers();
-        initHoverEffect();
     };
 
     let initProductHandlers = () => {
@@ -155,68 +153,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const addButton = e.target.closest(".add-to-cart");
             if (!addButton) return;
             const productCard = addButton.closest(".product-card");
-            if (!productCard) return;
             const productData = {
                 id: productCard.dataset.id,
                 name: productCard.querySelector(".product-title").textContent,
                 price: parseFloat(productCard.dataset.price),
-                image: productCard.querySelector(".product-image").src,
-                color: productCard.querySelector(".product-color").textContent,
+                image: productCard.querySelector(".product-image").src
             };
             cartManager.addItem(productData);
         });
     };
 
-    let initHoverEffect = () => {
-        const productCards = document.querySelectorAll(".product-card");
-        productCards.forEach(card => {
-            const addToCartButton = card.querySelector(".add-to-cart-container");
-            card.addEventListener("mouseenter", () => {
-                addToCartButton.style.display = "block";
-            });
-            card.addEventListener("mouseleave", () => {
-                addToCartButton.style.display = "none";
-            });
-        });
-    };
-
-    if (elements.priceRange && elements.priceDisplay) {
-        elements.priceRange.addEventListener("input", () => {
-            elements.priceDisplay.textContent = `€${elements.priceRange.value}`;
-        });
-    }
-
-    if (elements.searchInput) {
-        elements.searchInput.addEventListener("input", (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll(".product-card").forEach(product => {
-                const productName = product.querySelector(".product-title").textContent.toLowerCase();
-                product.style.display = productName.includes(query) ? "block" : "none";
-            });
-        });
-    }
-
-    if (elements.selectProduct) {
-        elements.selectProduct.addEventListener("change", (e) => {
-            const category = e.target.value.toLowerCase();
-            document.querySelectorAll(".product-card").forEach(product => {
-                const productCategory = product.dataset.category;
-                product.style.display = category === "all" || productCategory === category ? "block" : "none";
-            });
-        });
-    }
-
-    if (elements.priceRange) {
-        elements.priceRange.addEventListener("input", () => {
-            const maxPrice = parseFloat(elements.priceRange.value);
-            document.querySelectorAll(".product-card").forEach(product => {
-                const productPrice = parseFloat(product.dataset.price);
-                product.style.display = productPrice <= maxPrice ? "block" : "none";
-            });
-        });
-    }
-
-
-
-    loadProducts()
+    loadProducts();
 });

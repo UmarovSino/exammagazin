@@ -577,3 +577,38 @@ article:hover .cart-icon-btn {
   font-weight: 700;
   letter-spacing: -1px;
 }
+.view-details {
+  position: relative;
+  z-index: 2; /* Повышаем приоритет кнопки */
+  display: block; /* Кнопка всегда видима */
+}
+.add-to-cart-container {
+  position: relative;
+  z-index: 1;
+}
+.add-to-cart-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-details {
+  position: relative;
+  z-index: 2; /* Повышаем приоритет кнопки "Инфо" */
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.add-to-cart {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #ffcc00;
+  border-radius: 5px;
+  border: none;
+}
