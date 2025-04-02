@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     let elements = {
         cartCounter: document.querySelector(".cart-counter"),
@@ -11,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
         priceRange: document.getElementById("priceRange"),
         priceDisplay: document.getElementById("priceDisplay"),
         searchInput: document.querySelector(".search"),
-        selectProduct: document.querySelector(".selectproduct")
+        selectProduct: document.querySelector(".selectproduct"),
+        checkoutbtn: document.querySelector(".checkout-btn")
     };
-    ////логикаи корзина
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let cartManager = {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
         }
     });
-    ////логика total
+
     let updateOrderSummary = () => {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         elements.orderSummary.textContent = `$${total.toFixed(2)}`;
@@ -98,6 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.cartBtn.addEventListener("click", () => elements.modalBackdrop.style.display = "flex");
     elements.closeModal.addEventListener("click", () => elements.modalBackdrop.style.display = "none");
     elements.modalBackdrop.addEventListener("click", e => e.target === elements.modalBackdrop && (elements.modalBackdrop.style.display = "none"));
+
+    // Обработчик кнопки оформления заказа
+    elements.checkoutbtn.addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Ваша корзина пуста!");
+            return;
+        }
+        
+        if (confirm("Подтвердить оформление заказа?")) {
+            cart = [];
+            cartManager.updateCart();
+            elements.modalBackdrop.style.display = "none";
+            alert("Покупка успешно оформлена! Спасибо!");
+        }
+    });
 
     cartManager.updateCartUI();
 
@@ -119,10 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="product-info">
                     <h3 class="product-title">${product.name}</h3>
                     <p class="product-price">$${product.price}</p>
+                    <h2 class="product-color" style="display:none">${product.color}</h2>
+                    <h2 class="product-storage" style="display:none">${product.storage}</h2>
+                    <h2 class="product-processor" style="display:none">${product.processor}</h2>
+                    <h2 class="product-acumulyator" style="display:none">${product.acumulyator}</h2>
                 </div>
                 <div class="add-to-cart-container">
                     <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> 
                     </button>
                 </div>
             </article>
@@ -141,7 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: productCard.dataset.id,
                 name: productCard.querySelector(".product-title").textContent,
                 price: parseFloat(productCard.dataset.price),
-                image: productCard.querySelector(".product-image").src
+                image: productCard.querySelector(".product-image").src,
+                color: productCard.querySelector(".product-color").textContent,
             };
             cartManager.addItem(productData);
         });
@@ -196,34 +216,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     let initProductInfoModal = () => {
         const modal = document.querySelector(".product-modal");
         const modalContent = document.querySelector(".product-modal-content");
 
         document.querySelectorAll(".product-card").forEach(card => {
             card.addEventListener("click", (e) => {
-                if (e.target.closest(".add-to-cart")) return; 
+                if (e.target.closest(".add-to-cart")) return;
 
-                let productId = card.dataset.id;
                 const productName = card.querySelector(".product-title").textContent;
                 const productPrice = card.querySelector(".product-price").textContent;
                 const productImage = card.querySelector(".product-image").src;
+                const productColor = card.querySelector(".product-color").textContent;
+                const productStorage = card.querySelector(".product-storage").textContent;
+                const productProcessor = card.querySelector(".product-processor").textContent;
+                const productAcumulyator = card.querySelector(".product-acumulyator").textContent;
 
                 modalContent.innerHTML = `
                     <img src="${productImage}" alt="${productName}" class="modal-product-image">
                     <h2>${productName}</h2>
                     <p>Price: ${productPrice}</p>
-                    <p class="description">This wardrobe is the perfect blend of style and practicality. With several shelves and spacious drawers, it will help you organize your space and store everything you need. Fashionable and versatile, it will complement any bedroom or hallway, bringing a sense of order and harmony to your interior.</p>
+                    <h2>Color: ${productColor}</h2>
+                    <h2>Storage: ${productStorage}</h2>
+                    <h2>Processor: ${productProcessor}</h2>
+                    <h2>Battery: ${productAcumulyator}</h2>
                     <button class="close-modal">Close</button>
                 `;
 
                 modal.style.display = "flex";
 
-              /////махкамшавии модалкаи информация
-                document.querySelector(".close-modal").addEventListener("click", () => {
+                modalContent.querySelector(".close-modal").addEventListener("click", () => {
                     modal.style.display = "none";
-                  
                 });
 
                 modal.addEventListener("click", (event) => {
@@ -235,14 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-   
     loadProducts().then(() => {
         initProductInfoModal();
     });
-
-
-
 });
-
-
-

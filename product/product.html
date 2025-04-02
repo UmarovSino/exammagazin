@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>productpage</title>
-    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="/product/css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar">
-           
+
 
             <ul class="categoryHome">
                 <li class="home"><a href="http://127.0.0.1:5500/home/home.html">home</a></li>
                 <li class="products"><a href="http://127.0.0.1:5500/product/product.html">product</a></li>
                 <li class="about"><a href="http://127.0.0.1:5500/about/about.html">about</a></li>
-             
+
             </ul>
 
             <h1 class="comfy">Comfy</h1>
@@ -62,10 +62,10 @@
 
                 <select class="selectproduct">
                     <option value="all">All Brands</option>
-                    <option value="iphone11">iphone11</option>
-                    <option value="iphone12pro">iphone12pro</option>
-                    <option value="iphone">iphone</option>
-                    <option value="iphonex">iphonex</option>
+                    <option value="iphone11">iphone</option>
+                    <option value="iphone12pro">samsung</option>
+                    <option value="iphone">redmi</option>
+                    <option value="iphonex">infinix</option>
                 </select>
 
                 <div class="price-filter">
@@ -75,12 +75,17 @@
             </aside>
 
             <aside class="page-asaide">
-             
+
                 <article class="product-card" data-id="1" data-price="99.99" data-category="ikea">
                     <img src="product-image.jpg" alt="Product Name" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Product Name</h3>
                         <p class="product-price">$99.99</p>
+                        <p class="product-storage">34</p>
+                        <p class="product-acumulyator">34</p>
+                        <p class="product-processor">34</p>
+                        <p class="product-color">34</p>
+                        <p class="product-brand">34</p>
                     </div>
                     <div class="add-to-cart-container">
                         <button class="add-to-cart">
@@ -88,25 +93,26 @@
                         </button>
                     </div>
                 </article>
-                
-               
+
+
             </aside>
-            
+
         </section>
         <div class="product-modal" style="display: none;">
             <div class="product-modal-content">
-              
+
             </div>
         </div>
-        
-        
+
+
     </main>
 
     <script src="/product/product.js"></script>
     <script src="/admin/js/main.js"></script>
     <script src="/about/about.js"></script>
-  <script src="/home/home.js"></script>
-   
+    <script src="/home/home.js"></script>
+
+
 </body>
 
 </html>
