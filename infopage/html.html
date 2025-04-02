@@ -3,85 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Info</title>
     <link rel="stylesheet" href="/fontawesome-free-6.6.0-web/css/all.css">
-    <link rel="stylesheet" href="/home/css.css">
     <link rel="stylesheet" href="/product/css.css">
-    
+    <style>
+        .product-detail {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        #detail-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #f8f9fa;
+            padding: 1rem;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .specs p {
+            font-size: 1.1rem;
+            color: #495057;
+            margin: 1rem 0;
+        }
+
+        .cart-btn-detail {
+            background: #0984e3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            align-self: flex-start;
+        }
+
+        .cart-btn-detail:hover {
+            background: #0873c4;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <ul class="categoryHome">
-                <li class="home"><a href="http://127.0.0.1:5500/home/home.html">home</a></li>
-                <li class="products"><a href="http://127.0.0.1:5500/product/product.html">product</a></li>
-                <li class="about"><a href="http://127.0.0.1:5500/about/about.html">about</a></li>
-                <li class="about"><a href="http://127.0.0.1:5500/infopage/html.html">info</a></li>
-             
+                <li><a href="/home/home.html">Главная</a></li>
+                <li><a href="/product/product.html">Товары</a></li>
+                <li><a href="/about/about.html">О нас</a></li>
             </ul>
             <h2 class="comfy">Comfy</h2>
-
             <div class="cart-container">
-                <button class="cart-btn" data-action="open-modal">
-                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                <button class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-counter">0</span>
                 </button>
             </div>
-
-            <div class="modal-backdrop">
-                <div class="modal">
-                    <form class="order-form">
-                        <div class="order-header">
-                            <button class="close-modal" type="button" data-action="close-modal"></button>
-                        </div>
-
-                        <div class="order-content">
-                            <ul class="cart-items">
-                                <li class="cart-item">
-                                    <img src="" alt="">
-                                    <div class="item-info">
-                                        <h3></h3>
-                                        <p></p>
-                                        <p></p>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="order-summary">
-                                <p>total: <span>$0.00</span></p>
-                                <button class="checkout-btn">checkout</button>
-                                <button class="close">Continue shopping</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
         </nav>
-
-       
     </header>
 
- 
+    <section class="product-detail">
+        <div class="product-container">
+            <img id="detail-image" src="" alt="Product Image">
+            <div class="product-info">
+                <h1 id="detail-title"></h1>
+                <p id="detail-price" class="price"></p>
+                <div class="specs">
+                    <p id="detail-color"></p>
+                    <p id="detail-storage"></p>
+                    <p id="detail-processor"></p>
+                    <p id="detail-battery"></p>
+                </div>
+                <button class="cart-btn-detail" id="add-to-cart">
+                    <i class="fas fa-cart-plus"></i> Добавить в корзину
+                </button>
+            </div>
+        </div>
+    </section>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            // Элементы страницы
+            const elements = {
+                image: document.getElementById('detail-image'),
+                title: document.getElementById('detail-title'),
+                price: document.getElementById('detail-price'),
+                color: document.getElementById('detail-color'),
+                storage: document.getElementById('detail-storage'),
+                processor: document.getElementById('detail-processor'),
+                battery: document.getElementById('detail-battery'),
+                addToCartBtn: document.getElementById('add-to-cart'),
+                cartCounter: document.querySelector('.cart-counter')
+            };
 
+            // Загрузка данных товара
+            const loadProductDetails = async () => {
+                try {
+                    const response = await fetch(`http://localhost:3000/products/${productId}`);
+                    if (!response.ok) throw new Error('Товар не найден');
+                    
+                    const product = await response.json();
+                    
+                    // Заполнение данных
+                    elements.image.src = product.image;
+                    elements.title.textContent = product.name;
+                    elements.price.textContent = `$${product.price.toFixed(2)}`;
+                    elements.color.textContent = `Цвет: ${product.color}`;
+                    elements.storage.textContent = `Память: ${product.storage}GB`;
+                    elements.processor.textContent = `Процессор: ${product.processor}`;
+                    elements.battery.textContent = `Аккумулятор: ${product.battery}mAh`;
 
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    document.body.innerHTML = `<h1 style="text-align:center;padding:2rem">${error.message}</h1>`;
+                }
+            };
 
+            // Обработчик добавления в корзину
+            elements.addToCartBtn.addEventListener('click', () => {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const productData = {
+                    id: productId,
+                    name: elements.title.textContent,
+                    price: parseFloat(elements.price.textContent.replace('$', '')),
+                    image: elements.image.src,
+                    color: elements.color.textContent.split(': ')[1]
+                };
 
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({...productData, quantity: 1});
+                }
 
+                localStorage.setItem('cart', JSON.stringify(cart));
+                elements.cartCounter.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+                alert('Товар добавлен в корзину!');
+            });
 
-
-
-
-
-
-
-
-
-
-
-    <script src="/infopage/jinfo.js"></script>
-    <script src="/product/product.js"></script>
+            // Инициализация
+            if (productId) {
+                loadProductDetails();
+            } else {
+                document.body.innerHTML = '<h1 style="text-align:center;padding:2rem">Товар не найден</h1>';
+            }
+        });
+    </script>
     <script src="/admin/js/admin.js"></script>
+    <script src="/product/product.js"></script>
 </body>
 </html>

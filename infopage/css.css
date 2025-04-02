@@ -1,13 +1,18 @@
-.product-details {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+/* Основные стили из вашего кода + */
+.product-card {
+    transition: transform 0.3s;
+    cursor: pointer;
 }
-.product-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
-.specs {
-    margin-top: 20px;
+
+.modal {
+    right: -100%;
+    transition: right 0.3s;
+}
+
+.modal.active {
+    right: 0;
 }

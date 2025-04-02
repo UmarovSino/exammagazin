@@ -216,50 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    let initProductInfoModal = () => {
-        const modal = document.querySelector(".product-modal");
-        const modalContent = document.querySelector(".product-modal-content");
 
-        document.querySelectorAll(".product-card").forEach(card => {
-            card.addEventListener("click", (e) => {
-                if (e.target.closest(".add-to-cart")) return;
 
-                const productName = card.querySelector(".product-title").textContent;
-                const productPrice = card.querySelector(".product-price").textContent;
-                const productImage = card.querySelector(".product-image").src;
-                const productColor = card.querySelector(".product-color").textContent;
-                const productStorage = card.querySelector(".product-storage").textContent;
-                const productProcessor = card.querySelector(".product-processor").textContent;
-                const productAcumulyator = card.querySelector(".product-acumulyator").textContent;
-
-                modalContent.innerHTML = `
-                    <img src="${productImage}" alt="${productName}" class="modal-product-image">
-                    <h2>${productName}</h2>
-                    <p>Price: ${productPrice}</p>
-                    <h2>Color: ${productColor}</h2>
-                    <h2>Storage: ${productStorage}</h2>
-                    <h2>Processor: ${productProcessor}</h2>
-                    <h2>Battery: ${productAcumulyator}</h2>
-                    <button class="close-modal">Close</button>
-                `;
-
-                modal.style.display = "flex";
-
-                modalContent.querySelector(".close-modal").addEventListener("click", () => {
-                    modal.style.display = "none";
-                });
-
-                modal.addEventListener("click", (event) => {
-                    if (event.target === modal) {
-                        modal.style.display = "none";
-                    }
-                });
-            });
-        });
-    };
-
-    
-    loadProducts().then(() => {
-        initProductInfoModal();
-    });
+    loadProducts()
 });
