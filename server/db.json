@@ -21,6 +21,17 @@
       "storage": "256/8gb",
       "processor": "snapdragon124",
       "color": "blue"
+    },
+    {
+      "id": "1cff",
+      "name": "всы",
+      "price": 234234,
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALUAwgMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAFAwQGBwABAgj/xABPEAABAwICBAYNBwoFBAMAAAABAAIDBBEFEgYhMbETIjJBUXIHFCMkQmFxc4GRobLBMzRDUmKC0SU1RFOSorPC4fAVFmN08SY2g6NUVXX/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB0RAQEAAwEBAQEBAAAAAAAAAAABAhExIUEDMhL/2gAMAwEAAhEDEQA/AJDPhdW3kCOQfZNj7bb0xkimh4s0UjB0lmr8EcgxmhqTxKhgN7WeCw39I+KfBuZmpYXFt/pErOBuwlp6RqWn1k5kihfIHsfM1rs3QXAbQlYmngmnnyptVtHCQOt9PH7wS2ekopKeKnYWwxsiB22aLn0p0xtti5Df79JSzQrLTGtTkDkpNgTgDkoGmALq3J6w3rYC6tyesN6C06AXQC2BxF0AgNALn6ZvUO8JSy5t3ZvUO8IDtYurLEBgXQC5JaOUbLcckb+S8bdVnA+VMO2BMcQZmqdX6sfFEmhN6qPNNq/VjeVWPU5AE7cu1R7GvnMHVfvapRXR5dqjGMjvyLqO3hPIQ0jCcZeT1hvSUTU6Y274+u3eFFWl9li6stp6QpfQqlMFPM51jnc2RmU+C5oKtiIcRqrbRF2fDqc9FPGPVmHwVmUwvDHfxfBV+nmRYcRNjeImleMnBeeZ7wRDLyus7eUxxMdyB5w5pHrCwbJeByf75ylWBcW+O8pWMKtk7a1OLcnq/EpFqbVuNYfR1",
+      "brand": "цув",
+      "acumulyator": "цув",
+      "storage": "цув",
+      "processor": "цув",
+      "color": "цув"
     }
   ]
 }

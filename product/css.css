@@ -429,3 +429,151 @@ article:hover .cart-icon-btn {
 
 
 
+/* ===== Mobile Adaptation ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .categoryHome {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .categoryHome.active {
+    display: flex;
+  }
+
+  .comfy {
+    order: -1;
+    margin-right: auto;
+  }
+
+  .asaide-products {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .aside-products {
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  .page-asaide {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .product-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .product-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .add-to-cart {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .breadcrumbs {
+    padding: 1rem;
+    font-size: 14px;
+    height: auto;
+  }
+
+  .price-filter h3 {
+    font-size: 16px;
+  }
+
+  .search,
+  .selectproduct {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card h3 {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+
+  .modal {
+    padding: 15px;
+  }
+
+  .checkout-btn,
+  .continue-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .cart-counter {
+    top: -5px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+}
+
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.categoryHome {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.categoryHome li a {
+  color: #2d3436;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.categoryHome li a:hover {
+  color: #0984e3;
+  background: #f1f5f9;
+}
+
+.comfy {
+  font-size: 2rem;
+  color: #0984e3;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
