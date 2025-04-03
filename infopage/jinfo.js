@@ -36,3 +36,5 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector("#product-info").innerHTML = "<p>Ошибка загрузки данных о товаре.</p>";
         });
 });
+
+
