@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
- 
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
 
@@ -35,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Ошибка загрузки товара:", error);
             document.querySelector("#product-info").innerHTML = "<p>Ошибка загрузки данных о товаре.</p>";
         });
+
+
 });
+
 
 
