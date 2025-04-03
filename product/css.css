@@ -225,7 +225,7 @@ article:hover .cart-icon-btn {
 
 .product-card {
   position: relative;
-  width: 200px;
+  width: 280px;
   margin: 15px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -242,7 +242,7 @@ article:hover .cart-icon-btn {
 
 .add-to-cart-container {
   position: absolute;
-  bottom: 10px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
@@ -250,8 +250,8 @@ article:hover .cart-icon-btn {
 }
 
 .add-to-cart {
-  background-color: #ff7b00;
-  color: white;
+  
+ background-color: white;
   border: none;
   padding: 10px 20px;
   font-size: 14px;
@@ -260,23 +260,27 @@ article:hover .cart-icon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+
+
 }
 
 .add-to-cart i {
   margin-right: 8px;
+
 }
 
 .add-to-cart:hover {
-  background-color: #e66b00;
+ 
   transform: scale(1.05);
+
 }
 
 .product-image {
   width: 100%;
-  height: auto;
+  height: 30vh;
   display: block;
   transition: transform 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .product-card:hover .product-image {
@@ -289,7 +293,7 @@ article:hover .cart-icon-btn {
 
 .asaide-products {
   display: flex;
-  max-width: 1400px;
+  max-width: 1100px;
   margin: auto;
 
 }
@@ -302,9 +306,10 @@ article:hover .cart-icon-btn {
 .aside-products{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   margin-left: 30px;
   margin-top: 50px;
+  
   
 }
 .breadcrumbs{
@@ -487,12 +492,12 @@ article:hover .cart-icon-btn {
 
   .add-to-cart {
     padding: 12px 18px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .breadcrumbs {
     padding: 1rem;
-    font-size: 14px;
+    font-size: 18px;
     height: auto;
   }
 
@@ -579,8 +584,10 @@ article:hover .cart-icon-btn {
 }
 .view-details {
   position: relative;
-  z-index: 2; /* Повышаем приоритет кнопки */
-  display: block; /* Кнопка всегда видима */
+  z-index: 2; 
+  display: block; 
+  width: 40px;
+  margin-top: 10px;
 }
 .add-to-cart-container {
   position: relative;
@@ -596,11 +603,11 @@ article:hover .cart-icon-btn {
 
 .view-details {
   position: relative;
-  z-index: 2; /* Повышаем приоритет кнопки "Инфо" */
+  z-index: 2; 
   cursor: pointer;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #000;
+ 
   background-color: #fff;
   border-radius: 5px;
 }
@@ -608,7 +615,7 @@ article:hover .cart-icon-btn {
 .add-to-cart {
   cursor: pointer;
   padding: 5px 10px;
-  background-color: #ffcc00;
+
   border-radius: 5px;
   border: none;
 }
