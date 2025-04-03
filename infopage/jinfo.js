@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Извлекаем параметр ID из URL
+ 
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
 
@@ -8,22 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Загружаем данные товара с сервера
+  
     fetch(`http://localhost:3000/product/${productId}`)
         .then(response => response.json())
         .then(product => {
-            // Отображаем данные о товаре
+          
             document.querySelector("#product-info").innerHTML = `
-                <h1>${product.name}</h1>
-                <img src="${product.image}" alt="${product.title}">
+             <img src="${product.image}" alt="${product.title}">
+        <div class="info-productpage">
+             <h1>${product.name}</h1>
                 <h2>price: $${product.price}</h2>
                 <p>color: ${product.color}</p>
                 <p>storage:${product.storage}</p>
                  <p>accumulyator:${product.acumulyator}</p>
                   <p>brand:${product.brand}</p>
                    <p>processor:${product.processor}</p>
-
+                    <div class="add-to-cart-container">
+                        <button class="add-to-cart"><i class="fa-solid fa-basket-shopping"></i></button>
+                    </div>
+            </div>
             `;
+           
+           
         })
         .catch(error => {
             console.error("Ошибка загрузки товара:", error);
