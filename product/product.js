@@ -106,15 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     elements.checkoutbtn.addEventListener("click", () => {
         if (cart.length === 0) {
-            alert("Ваша корзина пуста!");
+            alert("корзинаи шумо холи аст!");
             return;
         }
         
-        if (confirm("Подтвердить оформление заказа?")) {
+        if (confirm("Фармоиши худро тасдиқ кунед?")) {
             cart = [];
             cartManager.updateCart();
             elements.modalBackdrop.style.display = "none";
-            alert("Покупка успешно оформлена! Спасибо!");
+            alert("Покупка успешно гзашт! Раҳмат барои харид!");
         }
     });
 
@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3 class="product-title">${product.name}</h3>
                     <p class="product-price">$${product.price}</p>
                     <div class="add-to-cart-container">
-                        <button class="add-to-cart">Добавить в корзину</button>
-                        <a href="http://127.0.0.1:5500/infopage/html.html?id=${product.id}" class="view-details">info</a>
+                        <button class="add-to-cart"><i class="fa-solid fa-basket-shopping"></i></button>
+                        <a href="http://127.0.0.1:5500/infopage/html.html?id=${product.id}" class="view-details"><i class="fa-solid fa-circle-info"></i></a>
                     </div>
                 </div>
             </article>

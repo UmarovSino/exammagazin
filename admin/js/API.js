@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:3000/product';
 
 export const getProducts = async () => {
     let response = await fetch(API_URL);
-    if (!response.ok) throw new Error("Ошибка получения данных");
+    if (!response.ok) throw new Error("Ошибка ");
     return await response.json();
 };
 

@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         try {
             const products = await getProducts();
-            const product = products.find(p => String(p.id) === productId); // Исправлено сравнение
+            const product = products.find(p => String(p.id) === productId); 
             
             if (!product) {
                 alert('Product not found!');
