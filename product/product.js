@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cart = [];
             cartManager.updateCart();
             elements.modalBackdrop.style.display = "none";
-            alert("Покупка успешно гзашт! Раҳмат барои харид!");
+            alert("харид бомуваффакият гзашт! Раҳмат барои харид!");
         }
     });
 
