@@ -578,9 +578,10 @@ article:hover .cart-icon-btn {
 
 .comfy {
   font-size: 2rem;
-  color: #0984e3;
+ 
   font-weight: 700;
   letter-spacing: -1px;
+  font-style: italic;
 }
 .view-details {
   position: relative;
@@ -617,5 +618,12 @@ article:hover .cart-icon-btn {
   padding: 5px 10px;
 
   border-radius: 5px;
+  border: none;
+}
+.cart-item-image{
+  width: 200px;
+}
+.remove-item{
+  background-color: white;
   border: none;
 }

@@ -19,9 +19,11 @@ async function loadRandomProducts() {
                 let productElement = document.createElement('article');
                 productElement.classList.add('product-item');
                 productElement.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
+                    <img src="${product.image}" class="homeimgproduct" alt="${product.name}">
+                    <div class="productdive">
                     <h3>${product.name}</h3>
                     <p>$${product.price}</p>
+                    </div>
                 `;
                 mainContainer.appendChild(productElement);
             });

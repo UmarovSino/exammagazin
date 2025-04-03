@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(product => {
           
             document.querySelector("#product-info").innerHTML = `
-             <img src="${product.image}" alt="${product.title}">
+             <img src="${product.image}" class="infoimage" alt="${product.title}">
         <div class="info-productpage">
              <h1>${product.name}</h1>
                 <h2>price: $${product.price}</h2>
