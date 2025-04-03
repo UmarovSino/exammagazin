@@ -232,7 +232,7 @@ article:hover .cart-icon-btn {
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ 
 }
 
 .product-card:hover {
@@ -244,7 +244,7 @@ article:hover .cart-icon-btn {
   position: absolute;
   bottom: -5px;
   left: 50%;
-  transform: translateX(-50%);
+ 
   display: none;
   z-index: 2;
 }
@@ -254,7 +254,7 @@ article:hover .cart-icon-btn {
  background-color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
